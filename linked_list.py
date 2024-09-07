@@ -59,10 +59,21 @@ class LinkedList:
     if self._length == 0:
       self._head = new_node
       self._tail = new_node
+    else:
+      self._tail._next = new_node
+      self._tail = new_node
+    self._length += 1
 
   # TODO: Implement the add_to_head method here
   def add_to_head(self, value):
-    pass
+    new_node = Node(value)
+    if self._length == 0:
+      self._head = new_node
+      self._tail = new_node
+    else:
+      new_node._next = self._head
+      self._head = new_node
+    self._length += 1
 
   # TODO: Implement the remove_head method here
   def remove_head(self):
