@@ -31,7 +31,7 @@ Phase 2:
 class Node:
   # TODO: Set the `_value` `_next` node instance variables
   def __init__(self, value):
-    self.value = value
+    self._value = value
     self._next = None 
 
 
@@ -77,15 +77,35 @@ class LinkedList:
 
   # TODO: Implement the remove_head method here
   def remove_head(self):
-    pass
+    if self._length == 0:
+      return None 
+    old_head = self._head
+    self._head = old_head._next
+    self._length -= 1
+    if self._length == 0:
+      self._tail = None
+    return old_head._value
 
   # TODO: Implement the remove_tail method here
   def remove_tail(self):
-    pass
+    if self._length == 0:
+      return None
+    old_tail = self._tail
+    if self._length == 1:
+      self._head = None 
+      self._tail = None
+    else:
+      current = self._head
+      while current._next != self._tail:
+        current = current._next
+      self._tail = current
+      current._next = None
+    self._length -= 1
+    return old_tail._value
 
   # TODO: Implement the __len__ method here
   def __len__(self):
-    pass
+    return self._length
 
 # Phase 2
 
