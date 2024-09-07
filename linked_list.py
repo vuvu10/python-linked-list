@@ -31,22 +31,34 @@ Phase 2:
 class Node:
   # TODO: Set the `_value` `_next` node instance variables
   def __init__(self, value):
-    pass
+    self.value = value
+    self._next = None 
 
 
 # TODO: Implement a Singly Linked List class here
 class LinkedList:
   # TODO: Set the `_head` node, `_tail` node, and list `_length` instance variables
   def __init__(self):
-    pass
+    self._head = None
+    self._tail = None
+    self._length = 0 
+    
 
   # TODO: Implement the get_node method here
   def get_node(self, position):
-    pass
+    if position < 0 or position >= self._length:
+      return None 
+    current = self._head
+    for _ in range(position):
+      current = current._next
+    return current
 
   # TODO: Implement the add_to_tail method here
   def add_to_tail(self, value):
-    pass
+    new_node = Node(value)
+    if self._length == 0:
+      self._head = new_node
+      self._tail = new_node
 
   # TODO: Implement the add_to_head method here
   def add_to_head(self, value):
